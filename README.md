@@ -14,10 +14,10 @@ Each disease is predicted independently using its respective ML model trained wi
 
 MODELS 
 
-Diabetes              -  Random Forest Classifier 
-Kidney Disease (CKD)  -  Random Forest Classifier 
-Heart Disease         -  Random Forest Classifier           
-Liver Disease         -  Logistic Regression    
+Diabetes              -  Random Forest Classifier, 
+Kidney Disease (CKD)  -  Random Forest Classifier, 
+Heart Disease         -  Random Forest Classifier,           
+Liver Disease         -  Logistic Regression .   
 
 TECHNOLOGIES USED
 
