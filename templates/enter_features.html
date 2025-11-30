@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card glass-card p-4 shadow-sm">
+            <h3 class="mb-3">Enter features — {{ disease }}</h3>
+            <form method="POST" action="{{ url_for('predict', disease=disease) }}">
+                <div class="row">
+                    {% for fname in feature_names %}
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">{{ fname.replace('_',' ').capitalize() }}</label>
+                        <input class="form-control" name="{{ fname }}" placeholder="{{ fname.replace('_',' ').capitalize() }}" required>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="btn btn-success">Predict</button>
+                <a href="{{ url_for('select_disease') }}" class="btn btn-link">Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

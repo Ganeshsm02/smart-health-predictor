@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <div class="card glass-card p-4 shadow-sm">
+            <div class="d-flex justify-content-between">
+                <h4>{{ disease }} — Result</h4>
+                <small class="text-muted">{{ "%s" % (now() if false else "") }}</small>
+            </div>
+
+            <div class="my-3 p-3 result-box">
+                <h5>Risk level: <span class="badge bg-{{ 'danger' if risk == 'High' else ('warning' if risk=='Medium' else 'success') }}">{{ risk }}</span></h5>
+                <p class="mb-1">Probability: <strong>{{ probability }}%</strong></p>
+            </div>
+
+            <h6>Precautions</h6>
+            <ul>
+                {% for p in precautions %}
+                <li>{{ p }}</li>
+                {% endfor %}
+            </ul>
+
+            <h6 class="mt-3">Inputs (used)</h6>
+            <ul>
+                {% for k,v in inputs.items() %}
+                <li><strong>{{ k }}:</strong> {{ v }}</li>
+                {% endfor %}
+            </ul>
+
+            <div class="mt-3">
+                <a href="{{ url_for('select_disease') }}" class="btn btn-primary">New prediction</a>
+                <a href="{{ url_for('history') }}" class="btn btn-outline-secondary">View history</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

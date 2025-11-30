@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-11">
+        <div class="card glass-card p-3 shadow-sm">
+            <h4>Your Prediction History</h4>
+            {% if rows %}
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Disease</th>
+                            <th>Risk</th>
+                            <th>Probability</th>
+                            <th>Precautions</th>
+                            <th>Inputs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for r in rows %}
+                        <tr>
+                            <td>{{ r.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                            <td>{{ r.disease }}</td>
+                            <td>{{ r.risk_level }}</td>
+                            <td>{{ (r.probability*100)|round(2) }}%</td>
+                            <td>
+                                {% for p in r.precautions.split('||') %}
+                                <div>- {{ p }}</div>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for kv in r.inputs.split('||') %}
+                                <div>{{ kv }}</div>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p>No history found yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Health Disease Predictor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>AI Health Prediction</h1>
+
+        <form action="/predict" method="POST">
+
+            <label>Select Disease:</label>
+            <select id="disease" name="disease" onchange="showFields()">
+            <option value="Diabetes">Diabetes</option>
+            <option value="Kidney">Kidney</option>
+            <option value="Heart">Heart</option>
+            <option value="Liver">Liver</option>
+        </select>
+
+            <div id="form_fields"></div>
+            <button type="submit">Predict</button>
+
+        </form>
+    </div>
+
+    <script>
+        function showFields() {
+            const disease = document.getElementById("disease").value;
+            const box = document.getElementById("form_fields");
+
+            if (disease === "Diabetes") {
+                box.innerHTML = `
+        <input name="Pregnancies" placeholder="Pregnancies">
+        <input name="Glucose" placeholder="Glucose">
+        <input name="BloodPressure" placeholder="Blood Pressure">
+        <input name="SkinThickness" placeholder="Skin Thickness">
+        <input name="Insulin" placeholder="Insulin">
+        <input name="BMI" placeholder="BMI">
+        <input name="DiabetesPedigreeFunction" placeholder="Diabetes Pedigree Function">
+        <input name="Age" placeholder="Age">`;
+            } else if (disease === "Kidney") {
+                box.innerHTML = `
+        <input name="age" placeholder="Age">
+        <input name="bp" placeholder="Blood Pressure">
+        <input name="sg" placeholder="Specific Gravity">
+        <input name="al" placeholder="Albumin">
+        <input name="su" placeholder="Sugar">
+        <input name="bgr" placeholder="Blood Glucose Random">
+        <input name="bu" placeholder="Blood Urea">
+        <input name="sc" placeholder="Serum Creatinine">
+        <input name="sod" placeholder="Sodium">
+        <input name="pot" placeholder="Potassium">
+        <input name="hemo" placeholder="Hemoglobin">
+        <input name="pcv" placeholder="PCV">
+        <input name="wc" placeholder="WBC">
+        <input name="rc" placeholder="RBC">`;
+            } else if (disease === "Heart") {
+                box.innerHTML = `
+        <input name="age" placeholder="Age">
+        <input name="sex" placeholder="Sex (0/1)">
+        <input name="chest_pain" placeholder="Chest Pain Type">
+        <input name="resting_bp" placeholder="Resting BP">
+        <input name="chol" placeholder="Cholesterol">
+        <input name="fasting_bs" placeholder="Fasting Blood Sugar">
+        <input name="resting_ecg" placeholder="Resting ECG">
+        <input name="max_hr" placeholder="Max Heart Rate">
+        <input name="exercise_angina" placeholder="Exercise Angina (0/1)">
+        <input name="oldpeak" placeholder="ST Depression">
+        <input name="st_slope" placeholder="ST Slope">`;
+            } else {
+                box.innerHTML = `
+        <input name="age" placeholder="Age">
+        <input name="total_bilirubin" placeholder="Total Bilirubin">
+        <input name="direct_bilirubin" placeholder="Direct Bilirubin">
+        <input name="alkaline_phosphatase" placeholder="Alkaline Phosphatase">
+        <input name="alanine_aminotransferase" placeholder="ALT">
+        <input name="aspartate_aminotransferase" placeholder="AST">
+        <input name="total_proteins" placeholder="Total Proteins">
+        <input name="albumin" placeholder="Albumin">
+        <input name="albumin_globulin_ratio" placeholder="A/G Ratio">
+        <input name="gender" placeholder="Gender (0/1)">`;
+            }
+        }
+        showFields();
+    </script>
+
+</body>
+
+</html>

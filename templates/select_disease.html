@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card glass-card p-4 shadow-sm">
+            <h3 class="mb-3">Choose disease to predict</h3>
+            <form method="POST" action="{{ url_for('select_disease') }}">
+                <div class="mb-3">
+                    <select name="disease" class="form-select" required>
+            <option value="">-- Select disease --</option>
+            {% for d in diseases %}
+              <option value="{{ d }}">{{ d }}</option>
+            {% endfor %}
+          </select>
+                </div>
+                <button class="btn btn-primary">Next</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
